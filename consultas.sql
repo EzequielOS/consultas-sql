@@ -6,16 +6,9 @@ Referência: https://www.youtube.com/playlist?list=PLHz_AreHm4dkBs-795Dsgvau_ekx
 Informações adicionais:
 */
 
-create database Cadastro;
-use Cadastro;
+#drop database Cadastro;  //deleta um DB
 
-create table Pessoas(
-	 nome varchar(30),
-     idade tinyint(3),
-     sexo char(1),
-     peso float,
-     altura float,
-     nacionalidade varchar(20)
-);
+create database Cadastro
+default character set utf8
+default collate utf8_general_ci;
 
-describe Pessoas;
