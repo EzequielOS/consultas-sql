@@ -23,7 +23,7 @@ create table Pessoas(
     altura decimal(3,2),
     nacionalidade varchar(20) default "Brasil",
     primary key (id)
-)default charset = utf8; 
+)default charset = utf8;
 
 insert into Pessoas values
 (default, 'Claudio', '1945-4-22', 'M', '99.0', '2.15', 'Brasil'),
@@ -65,12 +65,12 @@ alter table cursos
 add primary key (idcurso);
 
 insert into cursos values
-('1', 'HTML4', 'Curso de HTML5', '40', '37', '2014'), 
-('2', 'Algoritmos', 'Lógica de Programação', '20', '15', '2014'), 
-('3', 'Photoshop', 'Dicas de Photoshop CC', '10', '8', '2014'), 
-('4', 'PGP', 'Curso de PHP para iniciantes', '40', '20', '2010'), 
-('5', 'Jarva', 'Introdução', '10', '29', '2000'), 
-('6', 'MySql', 'Banco de Dados MySQL', '30', '15', '2016'), 
+('1', 'HTML4', 'Curso de HTML5', '40', '37', '2014'),
+('2', 'Algoritmos', 'Lógica de Programação', '20', '15', '2014'),
+('3', 'Photoshop', 'Dicas de Photoshop CC', '10', '8', '2014'),
+('4', 'PGP', 'Curso de PHP para iniciantes', '40', '20', '2010'),
+('5', 'Jarva', 'Introdução', '10', '29', '2000'),
+('6', 'MySql', 'Banco de Dados MySQL', '30', '15', '2016'),
 ('7', 'Word', 'Curso completo de Word', '40', '30', '2016');
 
 update Cursos /*aplica mudanças descritas abaixo*/
@@ -82,4 +82,11 @@ where idcurso = '8';
 
 truncate Cursos; /*deleta a tabela*/
 
-select * from cursos;
+select * from cursos
+where ano <= '2016'
+order by ano, nome;
+
+
+select nome, carga, totaulas from cursos
+where carga > 35 and totaulas < 30
+order by totaulas desc; 
