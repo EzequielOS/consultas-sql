@@ -82,11 +82,63 @@ where idcurso = '8';
 
 truncate Cursos; /*deleta a tabela*/
 
-select * from cursos
+/*--------------- COMANDOS SELECT ---------*/
+
+select * from cursos /*exibe tudo com valores descrito abaixo*/
 where ano <= '2016'
 order by ano, nome;
 
-
 select nome, carga, totaulas from cursos
-where carga > 35 and totaulas < 30
-order by totaulas desc; 
+where carga > '35' and totaulas < '30'
+order by totaulas desc;
+
+
+select * from cursos
+where nome like 'a%'; /*exibe o que começa com a*/
+
+select distinct nacionalidade from gafanhotos; /*exibe resultados sem repeti-los*/
+
+select count(*) from cursos /*conta total de linhas com especificacoes descritas*/
+where ano = '2016';
+
+select max(carga) from cursos /*seleciona a campos maior na linha*/
+where ano = '2018';
+
+select nome, min(totaulas) from cursos;/*seleciona a campos menor na linha*/
+
+select sum(totaulas) from cursos /*soma campos das linhas*/
+where ano = '2014';
+
+select * from cursos
+where ano = '2014';
+
+select avg(carga) from cursos;/*calcula media dos campos das linhas*/
+
+
+/*---- EXERCICIOS do VIDEO ----*/
+select nome from gafanhotos
+where sexo = 'F';
+
+select * from gafanhotos
+where nascimento >= '2000-01-01' and nascimento <= '2015-12-31';
+
+select nome from gafanhotos
+where sexo = 'M' and profissao = 'Programador';
+
+select * from gafanhotos
+where nacionalidade = 'brasil' and  sexo = 'F' and nome like 'j%';
+
+select nome, nacionalidade from gafanhotos
+where  nacionalidade != 'Brasil' and peso < '100' and nome like '%Silva';
+
+select max(altura) from gafanhotos
+where nacionalidade = 'Brasil' and sexo = 'M';
+
+select avg(altura) from gafanhotos
+where sexo = 'M';
+
+select min(peso) from gafanhotos
+where sexo = 'F' and nacionalidade != 'Brasil' and nascimento >= '1990-01-01' and nascimento <= '2000-12-31';
+
+select count(id) from gafanhotos
+where sexo = 'F' and altura > '1.90';
