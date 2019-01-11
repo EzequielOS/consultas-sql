@@ -142,3 +142,40 @@ where sexo = 'F' and nacionalidade != 'Brasil' and nascimento >= '1990-01-01' an
 
 select count(id) from gafanhotos
 where sexo = 'F' and altura > '1.90';
+
+/* -------------------------- ------------------- ----------------*/
+
+select totaulas, count(totaulas) from cursos
+group by totaulas /*Agrupa todos os cursos de mesma quantidade de aula*/
+order by totaulas;
+
+select totaulas, count(totaulas) from cursos
+group by totaulas
+having totaulas > (select avg(totaulas) from cursos) /*exibe apenas aulas com numero maoir que a media de aulas*/
+order by totaulas;
+
+/*---- EXERCICIOS do VIDEO ----*/
+select profissao, count(profissao) from gafanhotos
+group by profissao 
+order by profissao;
+
+select sexo, count(id) from gafanhotos
+where nascimento > '2005-01-01'
+group by sexo
+order by sexo;
+
+select nacionalidade, count(nacionalidade) from gafanhotos
+where nacionalidade != 'Brasil'
+group by nacionalidade
+having count(nacionalidade) >'3'
+order by nacionalidade;
+
+select avg(altura) from gafanhotos;
+
+select altura, count(altura) from gafanhotos
+where peso > '100.0'
+group by altura
+having altura > (select avg(altura) from gafanhotos)
+order by altura;
+
+/* -------------------------- ------------------- ----------------*/
