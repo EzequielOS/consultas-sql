@@ -179,3 +179,57 @@ having altura > (select avg(altura) from gafanhotos)
 order by altura;
 
 /* -------------------------- ------------------- ----------------*/
+
+
+/* ------------Exercicios site SQL Teaching ----------------*/
+select name, species from family_members;
+
+select * from family_members
+where species = 'dog';
+
+select * from family_members
+where num_books_read  > 190;
+
+select * from family_members
+where num_books_read  >= 180;
+
+select * from friends_of_pickles
+where species = 'dog' and height_cm < '45';
+
+select * from friends_of_pickles
+where species not in('cat','dog');
+
+select distinct species from friends_of_pickles
+where height_cm > 50;
+
+select * from friends_of_pickles
+order by height_cm desc;
+
+select * from friends_of_pickles
+order by height_cm desc
+limit 1;
+
+select count(*) from friends_of_pickles;
+
+select count(*) from friends_of_pickles
+where species = 'dog';
+
+select sum(num_books_read) from family_members;
+
+select avg(num_books_read) from family_members;
+
+select max(num_books_read) from family_members;
+
+select max(height_cm), species from friends_of_pickles
+group by species;
+
+select * from family_members 
+where num_books_read= (select max(num_books_read) FROM family_members); 
+
+select * from family_members 
+where favorite_book != 'null';
+
+select * from celebs_born
+where birthdate > '1980-09-01';
+
+/* -------------------------- ------------------- ----------------*/
