@@ -233,3 +233,41 @@ select * from celebs_born
 where birthdate > '1980-09-01';
 
 /* -------------------------- ------------------- ----------------*/
+
+use cadastro;
+desc gafanhotos;
+alter table gafanhotos add cursoPreferido int;
+
+alter table gafanhotos
+add foreign key (cursoPreferido)
+references cursos(idcurso);
+
+update gafanhotos set cursoPreferido = '6'
+where id = '1';
+
+select * from gafanhotos;
+
+select g.nome, c.nome, c.ano
+from gafanhotos as g join cursos as c
+on c.idcurso = g.cursopreferido
+order by c.nome;
+
+
+create table gafanhotoAssisteCurso (
+id int not null auto_increment,
+data date,
+idGafanhoto int,
+idCurso int,
+primary key(id),
+foreign key(idGafanhoto) references gafanhotos(id),
+foreign key(idCurso) references cursos(idcurso)
+) default charset = utf8;
+
+select * from gafanhotoAssisteCurso;
+
+select g.nome, a.idGafanhoto, c.nome from gafanhotos as g
+join gafanhotoAssisteCurso as a
+on g.id = a.idGafanhoto
+join cursos as c
+on c.idcurso = a.idCurso
+order by g.nome;
