@@ -271,3 +271,55 @@ on g.id = a.idGafanhoto
 join cursos as c
 on c.idcurso = a.idCurso
 order by g.nome;
+
+/* ------------Exercicios_2 site SQL Teaching ----------------*/
+select character.name, character_actor.actor_name from character 
+join character_actor
+on character.id = character_actor.character_id;
+
+select character.name, actor.name from character 
+join character_actor
+on character.id = character_actor.character_id
+join actor
+on character_actor.actor_id = actor.id;
+
+select c.name, ts.name from character as c
+join character_tv_show as cts
+on cts.character_id = c.id
+join tv_show as ts
+on cts.tv_show_id = ts.id
+where c.name != 'Willow Rosenberg' and ts.name != 'How I Met Your Mother';
+
+select character.name, actor.name from character
+left join character_actor 
+on  character.id = character_actor .character_id
+left join actor 
+on character_actor .actor_id = actor.id;
+
+select c.name, a.name from character as c
+left join character_actor as ca
+on ca.character_id = c.id
+left join actor as a
+on ca.actor_id = a.id;
+
+select character.name as character, actor.name as actor from character
+left join character_actor as ca
+on ca.character_id = character.id
+left join actor 
+on ca.actor_id = actor.id;
+
+select em1.name as employee_name, em2.name as boss_name from employees as em1
+join employees as em2
+on em1.boss_id = em2.id;
+
+select * from robots
+where name like '%Robot 20%';
+
+select *, case when species = 'human' then 'talk' when species = 'dog' then 'bark' else 'meow' end as sound 
+from friends_of_pickles;
+
+select * from robots where substr(location, -2) like 'NY';
+
+select name, coalesce(tank, gun, sword) as weapon from fighters;
+
+/* -------------------------- ------------------- ----------------*/
